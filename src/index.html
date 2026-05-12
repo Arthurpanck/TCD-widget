@@ -28,14 +28,16 @@
   </head>
   <body>
 
-      <!-- Ultra-compact controls on single line -->
+      <!-- Ultra-compact essential controls -->
       <div id="controls-container" role="toolbar" aria-label="Options du tableau">
-          <select id="view-mode-select" aria-label="Sélectionner la vue du tableau" title="Vue">
-              <option value="pivot">Vue Tableau</option>
+          <label for="view-mode-select" class="inline-label">Vue:</label>
+          <select id="view-mode-select" aria-label="Sélectionner la vue du tableau">
+              <option value="pivot">Tableau Croisé</option>
               <option value="fullscreen">Plein écran</option>
           </select>
 
-          <select id="column-size-select" aria-label="Ajuster la taille des colonnes" title="Taille colonnes">
+          <label for="column-size-select" class="inline-label">Taille:</label>
+          <select id="column-size-select" aria-label="Ajuster la taille des colonnes">
               <option value="1.0">1.0x</option>
               <option value="0.9">0.9x</option>
               <option value="0.8">0.8x</option>
@@ -50,22 +52,8 @@
 
           <label class="checkbox-label">
               <input type="checkbox" id="subtotals-checkbox" aria-label="Afficher ou masquer les sous-totaux" />
-              <span>Subtotals</span>
+              <span>Sous-totaux</span>
           </label>
-
-          <label class="checkbox-label">
-              <input type="checkbox" id="fixed-width-checkbox" aria-label="Activer le mode largeur fixe" />
-              <span>Mode fixe</span>
-          </label>
-
-          <select id="aggregations-select" aria-label="Sélectionner les agrégations" title="Agrégations" multiple>
-              <option value="sum" selected>Somme</option>
-              <option value="average">Moyenne</option>
-              <option value="count">Comptage</option>
-              <option value="min">Min</option>
-              <option value="max">Max</option>
-              <option value="median">Médiane</option>
-          </select>
       </div>
   
     <!-- exit full screen -->
@@ -83,7 +71,6 @@
     <script src="columnSizeManager.js"></script>
     <script src="subtotalsManager.js"></script>
     <script src="PivotLabels.js"></script>
-    <script src="multiAggregationManager.js"></script>
     <script src="excelExporter.js"></script>
     <script src="index.js"></script>
   </body>

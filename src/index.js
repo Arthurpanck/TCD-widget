@@ -12,8 +12,6 @@ let lastPivotData = null;  // Stocke les données brutes du tableau reçues de G
 let currentPivotConfig = {};  // Configuration du tableau (rows, cols, vals, aggregatorName, rendererName)
 let pivotTableInitialized = false; // suit l'état d'initialisation du widget
 let subtotalsEnabledState = false; // État des sous-totaux
-let fixedWidthMode = false; // État du mode fixe
-let multiAggregationEnabled = false; // État des agrégations multiples
 let originalVals = []; // Stocke les champs Valeur originaux
 
 // Fonction pour mettre à jour le tableau même lorsqu'il est en plein écran
@@ -41,18 +39,11 @@ function updateFullscreenTable() {
 }
 
 /**
- * Applique ou retire la classe fixed-width aux conteneurs de tableau
  */
-function applyFixedWidthMode() {
   const $pivotUIContainer = $('#table');
   const $fullscreenContainer = $('#fullscreen-table-container');
 
-  if (fixedWidthMode) {
-    $pivotUIContainer.addClass('fixed-width');
-    $fullscreenContainer.addClass('fixed-width');
   } else {
-    $pivotUIContainer.removeClass('fixed-width');
-    $fullscreenContainer.removeClass('fixed-width');
   }
 }
 
@@ -122,7 +113,6 @@ function checkPivotTableAndApplyFullscreen() {
     }
 
     // Appliquer le styling des agrégations multiples
-    if (multiAggregationEnabled && MultiAggregationManager) {
       const $pivotTable = $('#table').find('table.pvtTable');
       MultiAggregationManager.applyAggregationStyling($pivotTable[0]);
     }
@@ -320,12 +310,10 @@ function handleMultiAggregationChange(event) {
   if (!MultiAggregationManager) return;
 
   const selectedAggs = MultiAggregationManager.getSelectedAggregations();
-  multiAggregationEnabled = selectedAggs.length > 1;
 
   // Sauvegarder la configuration
   grist.setOption('multiAggregations', {
     selected: selectedAggs,
-    enabled: multiAggregationEnabled
   }).catch(err => {
     console.error("Failed to save multiAggregations:", err);
   });
@@ -400,7 +388,6 @@ grist.onRecords(async rec => {
           }
 
           // Appliquer le styling des agrégations multiples
-          if (multiAggregationEnabled && MultiAggregationManager) {
             const $pivotTable = $('#table').find('table.pvtTable');
             MultiAggregationManager.applyAggregationStyling($pivotTable[0]);
           }
@@ -434,7 +421,6 @@ grist.onRecords(async rec => {
         }
 
         // Appliquer le styling des agrégations multiples
-        if (multiAggregationEnabled && MultiAggregationManager) {
           const $pivotTable = $('#table').find('table.pvtTable');
           MultiAggregationManager.applyAggregationStyling($pivotTable[0]);
         }
@@ -466,19 +452,12 @@ grist.onRecords(async rec => {
 
   // Charger l'état du mode fixe
   try {
-    const localStorageFixedWidth = localStorage.getItem('fixedWidthMode');
     if (localStorageFixedWidth !== null) {
-      fixedWidthMode = localStorageFixedWidth === 'true';
     } else {
-      const savedFixedWidthMode = await grist.getOption('fixedWidthMode');
       if (savedFixedWidthMode !== undefined) {
-        fixedWidthMode = savedFixedWidthMode;
       }
     }
-    $('#fixed-width-checkbox').prop('checked', fixedWidthMode);
-    applyFixedWidthMode();
   } catch (e) {
-    console.error("Error loading fixedWidthMode:", e);
   }
 
   // Initialiser le gestionnaire des agrégations multiples
@@ -489,7 +468,6 @@ grist.onRecords(async rec => {
     // Charger l'état des agrégations multiples sauvegardé
     await MultiAggregationManager.loadAggregationState();
     const selectedAggs = MultiAggregationManager.getSelectedAggregations();
-    multiAggregationEnabled = selectedAggs.length > 1;
   }
 
   // Initialiser l'interceptor pour l'export XLSX personnalisé
@@ -617,23 +595,16 @@ $(document).ready(function() {
   });
 
   // Gestionnaire pour la case à cocher du mode fixe
-  $('#fixed-width-checkbox').on('change', function() {
-    fixedWidthMode = $(this).is(':checked');
 
     // Sauvegarder dans localStorage (préférence locale persistante)
     try {
-      localStorage.setItem('fixedWidthMode', fixedWidthMode);
     } catch (e) {
-      console.warn("Failed to save fixedWidthMode to localStorage:", e);
     }
 
     // Sauvegarder également dans Grist
-    grist.setOption('fixedWidthMode', fixedWidthMode).catch(err => {
-      console.error("Failed to save fixedWidthMode to Grist:", err);
     });
 
     // Appliquer le mode fixe immédiatement
-    applyFixedWidthMode();
 
     // Si on est en mode plein écran, mettre à jour le tableau
     if (currentViewMode === 'fullscreen') {

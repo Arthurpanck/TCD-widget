@@ -114,24 +114,6 @@ body {
   border: 1px solid var(--border-light);
 }
 
-/* Mode fixe - tableau ne s'expand pas à 100% */
-#table.fixed-width {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
-}
-
-#fullscreen-table-container.fixed-width {
-  display: inline-block;
-  width: auto;
-  max-width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2000;
-  height: 100%;
-  overflow: auto;
-}
 
 /* --- STYLES ULTRA-COMPACT POUR LE SÉLECTEUR DE VUE ET TAILLE --- */
 #controls-container {
@@ -197,6 +179,16 @@ body.fullscreen-active #controls-container {
   accent-color: var(--primary-color);
   border-radius: 2px;
   margin: 0;
+}
+
+/* Inline labels pour Vue et Taille */
+.inline-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dark);
+  white-space: nowrap;
+  margin-right: 2px;
+  font-family: 'Marianne', sans-serif;
 }
 
 .checkbox-label span {
