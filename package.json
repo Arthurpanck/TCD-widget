@@ -3,6 +3,9 @@
   "description": "Customizable pivot table",
   "homePage": "https://github.com/gristlabs/grist-widget",
   "version": "0.0.1",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
   "grist": {
     "name": "Pivot table",
     "url": "https://gristlabs.github.io/grist-widget/pivottable/index.html",

@@ -1,39 +1,57 @@
-/* Variables de couleurs complètes */
+/* Variables DSFR - Système de Design de l'État Français */
 :root {
-  --primary-color: #475569;
-  --primary-light: #64748b;
-  --secondary-color: #6366f1;
-  --accent-color: #10b981;
-  --background-light: #f8fafc;
-  --background-dark: #1e293b;
+  /* Couleurs primaires DSFR */
+  --primary-color: #000091;        /* Bleu officiel France */
+  --primary-light: #3A3FB7;
+  --primary-lighter: #8B8FD9;
+  --secondary-color: #6c757d;      /* Gris neutre */
+
+  /* Couleurs d'état DSFR */
+  --success-color: #18753c;        /* Vert - succès */
+  --danger-color: #ce0500;         /* Rouge - erreur */
+  --warning-color: #d4a574;        /* Beige - avertissement */
+  --info-color: #3a5afc;           /* Bleu info */
+
+  /* Arrière-plans DSFR */
+  --background-light: #f5f5f5;     /* Fond clair DSFR */
+  --background-dark: #323232;      /* Fond sombre */
+  --background-alt: #ffffff;       /* Blanc pour contenu */
+
+  /* Textes DSFR */
   --text-light: #f1f5f9;
-  --text-dark: #0f172a;
-  --border-light: #e2e8f0;
-  --border-dark: #475569;
-  --hover-light: #f1f5f9;
-  --hover-dark: #334155;
-  
-  /* Variables pour le tableau - style moderne et neutre */
-  --table-header-bg: #f8fafc;
-  --table-header-text: #64748b;
+  --text-dark: #161616;            /* Texte sombre DSFR */
+  --text-disabled: #9ca3af;
+
+  /* Bordures et contours */
+  --border-light: #dfe3e6;         /* Bordure légère DSFR */
+  --border-dark: #6c757d;
+  --border-focus: #000091;         /* Bordure focus bleu DSFR */
+
+  /* Interaction */
+  --hover-light: #f0f0f0;
+  --hover-dark: #2a2a3a;
+
+  /* Variables pour le tableau */
+  --table-header-bg: #f5f5f5;
+  --table-header-text: #161616;
   --table-row-even: #ffffff;
-  --table-row-odd: #ffffff;
-  --table-border: #e2e8f0;
-  --table-hover: #f1f5f9;
-  
-  /* Couleurs spécifiques pour chaque type de variable */
-  --tag-blue-bg: #dbeafe;
-  --tag-blue-text: #1e40af;
-  --tag-blue-hover: #bfdbfe;
+  --table-row-odd: #f9f9f9;
+  --table-border: #dfe3e6;
+  --table-hover: #f0f0f0;
+
+  /* Étiquettes de variables - palette étendue */
+  --tag-blue-bg: #e8eeff;
+  --tag-blue-text: #000091;
+  --tag-blue-hover: #d5deff;
   --tag-purple-bg: #ede9fe;
   --tag-purple-text: #7c3aed;
   --tag-purple-hover: #ddd6fe;
   --tag-pink-bg: #fce7f3;
   --tag-pink-text: #be185d;
   --tag-pink-hover: #fbcfe8;
-  --tag-green-bg: #dcfce7;
-  --tag-green-text: #15803d;
-  --tag-green-hover: #bbf7d0;
+  --tag-green-bg: #e8f5e9;
+  --tag-green-text: #18753c;
+  --tag-green-hover: #c8e6c9;
   --tag-yellow-bg: #fef3c7;
   --tag-yellow-text: #d97706;
   --tag-yellow-hover: #fde68a;
@@ -43,9 +61,9 @@
   --tag-indigo-bg: #e0e7ff;
   --tag-indigo-text: #4338ca;
   --tag-indigo-hover: #c7d2fe;
-  --tag-red-bg: #fee2e2;
-  --tag-red-text: #dc2626;
-  --tag-red-hover: #fecaca;
+  --tag-red-bg: #fadbd8;
+  --tag-red-text: #ce0500;
+  --tag-red-hover: #f5aca6;
   --tag-orange-bg: #fed7aa;
   --tag-orange-text: #ea580c;
   --tag-orange-hover: #fdba74;
@@ -61,45 +79,74 @@
   --tag-rose-bg: #ffe4e6;
   --tag-rose-text: #e11d48;
   --tag-rose-hover: #fecdd3;
-  
+
   /* Zones de drop neutres */
-  --drop-zone-bg: #f1f5f9;
-  --drop-zone-border: #cbd5e1;
+  --drop-zone-bg: #f5f5f5;
+  --drop-zone-border: #dfe3e6;
+
+  /* Espacements DSFR (multiple de 8px) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 }
 
-/* Styles de base */
+/* Styles de base DSFR */
 body {
-  font-family: 'Inter', 'Nunito', sans-serif;
+  font-family: 'Marianne', 'Arial', sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: var(--spacing-lg);
   transition: all 0.3s ease;
   background-color: var(--background-light);
   color: var(--text-dark);
+  line-height: 1.6;
 }
 
-#table { 
+#table {
   max-width: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
   overflow-x: auto;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 20px;
+  background-color: var(--background-alt);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-light);
+}
+
+/* Mode fixe - tableau ne s'expand pas à 100% */
+#table.fixed-width {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+}
+
+#fullscreen-table-container.fixed-width {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  height: 100%;
+  overflow: auto;
 }
 
 /* --- STYLES POUR LE SÉLECTEUR DE VUE ET TAILLE --- */
 #controls-container {
-  margin-bottom: 20px; 
-  padding: 10px 15px;
-  background-color: #fff; 
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-  display: flex; 
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-light);
+  display: flex;
   align-items: center;
-  gap: 20px;
-  max-width: fit-content; 
-  position: relative; 
-  z-index: 10; 
+  gap: var(--spacing-lg);
+  max-width: fit-content;
+  position: relative;
+  z-index: 10;
 }
 
 body.fullscreen-active #controls-container {
@@ -109,29 +156,46 @@ body.fullscreen-active #controls-container {
 .control-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--spacing-sm);
 }
 
 .control-group label {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-dark);
   font-size: 14px;
   white-space: nowrap;
+  font-family: 'Marianne', sans-serif;
 }
 
 .control-group select {
-  border-radius: 8px !important;
-  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  border: 2px solid var(--border-light) !important;
   padding: 8px 12px !important;
-  font-family: 'Inter', 'Nunito', sans-serif !important;
+  font-family: 'Marianne', sans-serif !important;
   font-size: 14px !important;
-  background-color: #f3f4f6 !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+  background-color: var(--background-alt) !important;
+  box-shadow: none !important;
   min-width: 120px;
+  transition: border-color 0.2s ease !important;
 }
 
 .control-group select:hover {
-  border-color: var(--primary-light) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.control-group select:focus {
+  border-color: var(--primary-color) !important;
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
+}
+
+.control-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 6px;
+  accent-color: var(--primary-color);
+  border-radius: 2px;
 }
 
 /* --- STYLES POUR LE MODE PLEIN ÉCRAN --- */
@@ -170,26 +234,30 @@ body.fullscreen-active {
 /* --- BOUTON POUR QUITTER LE MODE PLEIN ÉCRAN --- */
 #fullscreen-exit-button {
   position: fixed;
-  bottom: 15px;
-  left: 15px;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
   z-index: 2002;
-  background-color: rgba(99, 102, 241, 0.75);
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  border-radius: 4px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 #fullscreen-exit-button:hover {
-  background-color: var(--primary-color);
-  transform: scale(1.1);
+  background-color: var(--primary-light);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+#fullscreen-exit-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 #fullscreen-exit-button svg {
   fill: white !important;
@@ -216,69 +284,88 @@ body.fullscreen-active #fullscreen-exit-button {
 
 /* --- STYLES POUR LES SÉLECTEURS ET CONTRÔLES --- */
 select, .pvtAttr, .pvtDropdownValue, .pvtDropdownMenu {
-  border-radius: 12px !important;
-  border: 1px solid var(--border-light) !important;
+  border-radius: 4px !important;
+  border: 2px solid var(--border-light) !important;
   padding: 8px 12px !important;
-  font-family: 'Inter', 'Nunito', sans-serif !important;
+  font-family: 'Marianne', sans-serif !important;
   font-size: 14px !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-  background-color: #f3f4f6 !important;
+  box-shadow: none !important;
+  background-color: var(--background-alt) !important;
+  color: var(--text-dark) !important;
 }
 
 select:hover, .pvtAttr:hover {
-  border-color: var(--primary-light) !important;
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: none !important;
+}
+
+select:focus, .pvtAttr:focus {
+  border-color: var(--primary-color) !important;
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
 }
 
 /* --- STYLES POUR LES BOUTONS --- */
 button, .pvtFilterBox button {
-  border-radius: 12px !important;
+  border-radius: 4px !important;
   background-color: var(--primary-color) !important;
   color: white !important;
   border: none !important;
-  padding: 8px 16px !important;
-  font-family: 'Inter', 'Nunito', sans-serif !important;
-  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  font-family: 'Marianne', sans-serif !important;
+  font-weight: 500 !important;
   transition: all 0.2s ease !important;
   cursor: pointer !important;
+  font-size: 14px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 button:hover, .pvtFilterBox button:hover {
   background-color: var(--primary-light) !important;
-  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+button:focus, .pvtFilterBox button:focus {
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
 }
 
 /* --- STYLES POUR LES TABLEAUX PIVOTTABLE --- */
 table.pvtTable {
-  border-collapse: separate !important;
+  border-collapse: collapse !important;
   border-spacing: 0 !important;
-  border-radius: 12px !important;
+  border-radius: 4px !important;
   overflow: hidden !important;
   border: 1px solid var(--table-border) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
-  margin-top: 20px !important;
-  font-size: 16px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+  margin-top: var(--spacing-md) !important;
+  font-size: 14px !important;
+  font-family: 'Marianne', sans-serif !important;
 }
 
 /* En-têtes du tableau */
-table.pvtTable thead tr th, 
+table.pvtTable thead tr th,
 table.pvtTable tbody tr th {
   background-color: var(--table-header-bg) !important;
   color: var(--table-header-text) !important;
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  padding: 16px 20px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 12px 16px !important;
   border: 1px solid var(--table-border) !important;
   text-align: left !important;
+  vertical-align: middle !important;
 }
 
 /* Cellules du tableau */
 table.pvtTable tbody tr td {
-  padding: 14px 20px !important;
+  padding: 12px 16px !important;
   border: 1px solid var(--table-border) !important;
   transition: background-color 0.2s ease !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 /* Rangées alternées pour meilleure lisibilité */
@@ -297,42 +384,71 @@ table.pvtTable tbody tr:hover td:not([style*="background-color:"]) {
 
 /* Valeurs numériques */
 table.pvtTable .pvtVal {
-  font-weight: 600 !important;
-  font-size: 17px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-align: right !important;
 }
 
 /* Totaux et étiquettes */
 .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
-  background-color: #eef2ff !important;
+  background-color: #e8eeff !important;
   color: var(--primary-color) !important;
-  font-weight: 700 !important;
-  font-size: 17px !important;
-  padding: 14px 20px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+}
+
+/* --- STYLES POUR LES SOUS-TOTAUX --- */
+table.pvtTable tr.subtotal-row {
+  background-color: #f5f5f5 !important;
+}
+
+table.pvtTable tr.subtotal-row td.subtotal-cell {
+  background-color: #f5f5f5 !important;
+  color: #161616 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 12px 16px !important;
+  border: 1px solid var(--table-border) !important;
+  border-top: 2px solid var(--primary-color) !important;
+  font-style: italic;
+}
+
+table.pvtTable tr.subtotal-row td.subtotal-label {
+  color: var(--text-dark) !important;
+  font-weight: 600 !important;
+  background-color: #e8eeff !important;
+}
+
+table.pvtTable tr.subtotal-row td.subtotal-value {
+  color: var(--text-dark) !important;
+  text-align: right !important;
+  font-weight: 500 !important;
 }
 
 /* --- STYLES POUR LES ZONES DE GLISSER-DÉPOSER --- */
 .pvtAxisContainer, .pvtVals {
-  border-radius: 12px !important;
-  background-color: #f8fafc !important;
-  border: 2px dashed #cbd5e1 !important;
-  padding: 15px !important;
-  margin: 10px 0 !important;
+  border-radius: 4px !important;
+  background-color: var(--drop-zone-bg) !important;
+  border: 2px dashed var(--drop-zone-border) !important;
+  padding: var(--spacing-md) !important;
+  margin: var(--spacing-sm) 0 !important;
   min-height: 50px !important;
   transition: all 0.3s ease !important;
 }
 
 .pvtAxisContainer:hover, .pvtVals:hover {
-  background-color: #f1f5f9 !important;
-  border-color: #94a3b8 !important;
+  background-color: var(--hover-light) !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* --- STYLES DE BASE POUR LES ÉLÉMENTS DE VARIABLES --- */
 .pvtAxisContainer li {
   padding: 4px !important;
   margin: 4px !important;
-  border: none !important; /* Suppression de la bordure */
-  background-color: transparent !important; /* Complètement transparent */
-  box-shadow: none !important; /* Suppression de l'ombre */
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
   transition: all 0.2s ease !important;
   font-size: 13px !important;
   font-weight: 500 !important;
@@ -343,17 +459,20 @@ table.pvtTable .pvtVal {
   min-height: auto !important;
   min-width: auto !important;
   white-space: nowrap !important;
+  font-family: 'Marianne', sans-serif !important;
 }
 
 /* Styles pour le pvtAttr qui recevra les couleurs */
 .pvtAttr {
-  border-radius: 8px !important;
+  border-radius: 4px !important;
   padding: 6px 12px !important;
   font-size: 13px !important;
   font-weight: 500 !important;
   transition: all 0.2s ease !important;
   cursor: pointer !important;
   display: inline-block !important;
+  font-family: 'Marianne', sans-serif !important;
+  border: none !important;
 }
 
 /* Classes de couleur pour les pvtAttr - application directe sur le span */
@@ -437,36 +556,45 @@ table.pvtTable .pvtVal {
 
 /* --- STYLES POUR LES FILTRES --- */
 .pvtFilterBox {
-  border-radius: 16px !important;
-  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
   border: 1px solid var(--table-border) !important;
-  padding: 18px !important;
-  background-color: white !important;
+  padding: var(--spacing-md) !important;
+  background-color: var(--background-alt) !important;
 }
 
 .pvtFilterBox h4 {
   margin-top: 0 !important;
   color: var(--primary-color) !important;
   font-weight: 600 !important;
-  font-size: 16px !important;
-  margin-bottom: 12px !important;
-  border-bottom: 2px solid #eef2ff !important;
-  padding-bottom: 10px !important;
+  font-size: 14px !important;
+  margin-bottom: var(--spacing-sm) !important;
+  border-bottom: 2px solid #e8eeff !important;
+  padding-bottom: 8px !important;
+  font-family: 'Marianne', sans-serif !important;
 }
 
 .pvtSearch {
-  border-radius: 20px !important;
-  border: 1px solid var(--table-border) !important;
+  border-radius: 4px !important;
+  border: 2px solid var(--border-light) !important;
   padding: 8px 12px !important;
   width: 90% !important;
   margin-bottom: 8px !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: none !important;
+  font-family: 'Marianne', sans-serif !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.pvtSearch:focus {
+  border-color: var(--primary-color) !important;
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
 }
 
 .pvtCheckContainer {
-  padding: 5px !important;
-  margin: 2px 0 !important;
-  border-radius: 8px !important;
+  padding: 6px !important;
+  margin: 4px 0 !important;
+  border-radius: 4px !important;
 }
 
 .pvtCheckContainer:hover {
@@ -487,14 +615,16 @@ table.pvtTable .pvtVal {
 
 /* --- DRAG AND DROP AMÉLIORÉ --- */
 .ui-sortable-helper {
-  opacity: 0.9 !important;
-  transform: scale(1.02) translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  border-radius: 8px !important;
+  opacity: 0.95 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 145, 0.2) !important;
+  border-radius: 4px !important;
   font-size: 13px !important;
   font-weight: 500 !important;
   z-index: 9999 !important;
   cursor: grabbing !important;
+  background-color: var(--primary-light) !important;
+  color: white !important;
 }
 
 .pvtAxisContainer .ui-sortable-placeholder,
@@ -502,9 +632,9 @@ table.pvtTable .pvtVal {
 .pvtRows .ui-sortable-placeholder,
 .pvtCols .ui-sortable-placeholder,
 .pvtUnused .ui-sortable-placeholder {
-  background-color: #e2e8f0 !important;
+  background-color: #e8eeff !important;
   border: 2px dashed var(--primary-color) !important;
-  border-radius: 8px !important;
+  border-radius: 4px !important;
   visibility: visible !important;
   margin: 4px !important;
   min-height: 28px !important;
@@ -513,139 +643,142 @@ table.pvtTable .pvtVal {
   box-shadow: none !important;
 }
 
-/* --- MODE SOMBRE --- */
+/* --- MODE SOMBRE (Optionnel) --- */
 @media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--background-dark);
-    color: var(--text-light);
+  :root {
+    --background-light: #1a1a1a;
+    --background-alt: #252525;
+    --text-dark: #e5e5e5;
+    --text-light: #ffffff;
+    --border-light: #404040;
+    --border-dark: #505050;
+    --table-header-bg: #2a2a2a;
+    --table-header-text: #e5e5e5;
+    --table-row-even: #1f1f1f;
+    --table-row-odd: #252525;
+    --table-hover: #2a2a2a;
+    --hover-light: #2a2a2a;
+    --drop-zone-bg: #2a2a2a;
   }
 
-  #controls-container { 
-      background-color: var(--background-dark); 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  body {
+    background-color: var(--background-light);
+    color: var(--text-dark);
   }
-  
+
+  #controls-container {
+    background-color: var(--background-alt);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-color: var(--border-light);
+  }
+
   .control-group label {
-      color: var(--text-light);
+    color: var(--text-dark);
   }
-  
+
   .control-group select {
-      background-color: #2d3748 !important;
-      color: var(--text-light) !important;
-      border-color: var(--border-dark) !important;
+    background-color: var(--background-alt) !important;
+    color: var(--text-dark) !important;
+    border-color: var(--border-light) !important;
+  }
+
+  .control-group select:focus {
+    border-color: var(--primary-color) !important;
   }
 
   #fullscreen-table-container {
-      background-color: var(--background-dark); 
-  }
-  
-  #fullscreen-exit-button {
-      background-color: rgba(129, 140, 248, 0.75);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-  #fullscreen-exit-button:hover {
-      background-color: var(--primary-light);
-  }
-  #fullscreen-exit-button svg {
-      fill: var(--text-light);
-  }
-  
-  #table {
-    background-color: #111827; 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); 
-  }
-  
-  select, .pvtAttr, .pvtDropdownValue, .pvtDropdownMenu {
-    background-color: #2d3748 !important; 
-    color: var(--text-light) !important;
-    border-color: var(--border-dark) !important;
+    background-color: var(--background-light);
   }
 
-  select:hover, .pvtAttr:hover {
-      border-color: var(--primary-light) !important;
-      background-color: #374151 !important; 
+  #fullscreen-exit-button {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
-  
-  .pvtUiCell,
-  .pvtRenderer,
-  .pvtAggregator {
-    background-color: #1f2937 !important;  
-    color: var(--text-light) !important;
-    border-color: var(--border-dark) !important;  
+
+  #table {
+    background-color: var(--background-alt);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-light);
   }
-  
+
+  select, .pvtAttr, .pvtDropdownValue, .pvtDropdownMenu {
+    background-color: var(--background-alt) !important;
+    color: var(--text-dark) !important;
+    border-color: var(--border-light) !important;
+  }
+
+  select:focus, .pvtAttr:focus {
+    border-color: var(--primary-color) !important;
+  }
+
   .pvtFilterBox {
-    background-color: #1f2937 !important;
-    color: var(--text-light) !important;
-    border-color: var(--border-dark) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;  
+    background-color: var(--background-alt) !important;
+    color: var(--text-dark) !important;
+    border-color: var(--border-light) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
   }
 
   .pvtFilterBox h4 {
-      color: var(--primary-light) !important;  
-      border-bottom-color: #374151 !important;  
+    color: var(--primary-light) !important;
+    border-bottom-color: #333333 !important;
   }
 
   .pvtSearch {
-      background-color: #2d3748 !important;
-      color: var(--text-light) !important;
-      border-color: var(--border-dark) !important;
+    background-color: var(--background-alt) !important;
+    color: var(--text-dark) !important;
+    border-color: var(--border-light) !important;
   }
 
   .pvtCheckContainer:hover {
-      background-color: var(--hover-dark) !important;
+    background-color: var(--table-hover) !important;
   }
-  
+
   table.pvtTable {
-    border-color: var(--border-dark) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+    border-color: var(--border-light) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
   }
-  
-  table.pvtTable thead tr th, 
+
+  table.pvtTable thead tr th,
   table.pvtTable tbody tr th {
-    background-color: #2d3748 !important;  
-    color: var(--text-light) !important;
-    border-color: var(--border-dark) !important;
+    background-color: var(--table-header-bg) !important;
+    color: var(--text-dark) !important;
+    border-color: var(--border-light) !important;
   }
-  
+
   table.pvtTable tbody tr td {
-    border-color: var(--border-dark) !important;
-    color: var(--text-light) !important;  
-  }
-  
-  table.pvtTable tbody tr td[style*="background-color:"] {
+    border-color: var(--border-light) !important;
     color: var(--text-dark) !important;
   }
-  
+
   table.pvtTable tbody tr:nth-child(even) td:not([style*="background-color:"]) {
-    background-color: #1e293b !important;  
+    background-color: var(--table-row-even) !important;
   }
-  
+
   table.pvtTable tbody tr:nth-child(odd) td:not([style*="background-color:"]) {
-    background-color: #1f2937 !important;  
+    background-color: var(--table-row-odd) !important;
   }
-  
+
   table.pvtTable tbody tr:hover td:not([style*="background-color:"]) {
-    background-color: var(--hover-dark) !important;
+    background-color: var(--table-hover) !important;
   }
-  
+
   .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
-    background-color: #312e81 !important;  
-    color: #c7d2fe !important;  
+    background-color: #1e1e3f !important;
+    color: #c7d2fe !important;
   }
-  
+
   .pvtAxisContainer, .pvtVals {
-    background-color: #1f2937 !important;  
-    border-color: #4338ca !important;  
+    background-color: var(--table-hover) !important;
+    border-color: var(--primary-light) !important;
   }
 
   .pvtAxisContainer:hover, .pvtVals:hover {
-    background-color: var(--hover-dark) !important;
+    background-color: #333333 !important;
     border-color: var(--primary-light) !important;
   }
 
   .ui-sortable-helper {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
   }
 
   .pvtAxisContainer .ui-sortable-placeholder,
@@ -653,7 +786,583 @@ table.pvtTable .pvtVal {
   .pvtRows .ui-sortable-placeholder,
   .pvtCols .ui-sortable-placeholder,
   .pvtUnused .ui-sortable-placeholder {
-    background-color: #2d3748 !important;  
-    border-color: var(--primary-light) !important;  
+    background-color: #1e1e3f !important;
+    border-color: var(--primary-light) !important;
+  }
+
+  /* Sous-totaux en mode sombre */
+  table.pvtTable tr.subtotal-row {
+    background-color: #2a2a2a !important;
+  }
+
+  table.pvtTable tr.subtotal-row td.subtotal-cell {
+    background-color: #2a2a2a !important;
+    color: #d0d0d0 !important;
+    border-color: #505050 !important;
+    border-top-color: var(--primary-light) !important;
+  }
+
+  table.pvtTable tr.subtotal-row td.subtotal-label {
+    color: #e5e5e5 !important;
+    background-color: #1e1e3f !important;
+  }
+
+  .multi-agg-controls {
+    background-color: var(--background-alt);
+    border-color: var(--border-light);
+  }
+
+  .agg-checkbox-label {
+    background-color: var(--table-hover);
+  }
+
+  .agg-checkbox-label:hover {
+    background-color: #333333;
+  }
+}
+
+/* ============================================================================ */
+/* RESPONSIVE DESIGN - MOBILE & TABLET */
+/* ============================================================================ */
+
+/* TABLETTES ET MOBILES LARGES - Écrans < 768px */
+@media (max-width: 767px) {
+  body {
+    padding: var(--spacing-md);
+  }
+
+  /* Controls adaptés au mobile */
+  #controls-container {
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .control-group {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 150px;
+    gap: var(--spacing-sm);
+  }
+
+  .control-group label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .control-group select {
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+    min-width: auto;
+    flex: 1;
+  }
+
+  .control-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+  }
+
+  /* Tableau scrollable horizontal */
+  #table {
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 auto;
+  }
+
+  #fullscreen-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Styles de table pour mobile */
+  table.pvtTable {
+    font-size: 13px !important;
+    border-radius: 4px !important;
+  }
+
+  table.pvtTable thead tr th,
+  table.pvtTable tbody tr th {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    min-width: 70px;
+    white-space: nowrap;
+    position: sticky;
+    background-color: var(--table-header-bg) !important;
+    z-index: 10;
+  }
+
+  /* Headers collants pour scroll horizontal */
+  table.pvtTable tbody tr th {
+    position: sticky;
+    left: 0;
+    z-index: 11;
+  }
+
+  table.pvtTable tbody tr td {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    min-width: 60px;
+    white-space: nowrap;
+  }
+
+  table.pvtTable .pvtVal {
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    text-align: right;
+  }
+
+  /* Sous-totaux */
+  .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  table.pvtTable tr.subtotal-row td.subtotal-cell {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* Zones de drag-drop */
+  .pvtAxisContainer, .pvtVals {
+    padding: var(--spacing-md) !important;
+    margin: var(--spacing-sm) 0 !important;
+  }
+
+  .pvtAxisContainer li {
+    font-size: 12px !important;
+    padding: 4px 6px !important;
+    margin: 3px 2px !important;
+  }
+
+  .pvtAttr {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Boutons touch-friendly */
+  button, .pvtFilterBox button {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    min-height: 44px;
+    border-radius: 4px !important;
+  }
+
+  #fullscreen-exit-button {
+    width: 44px;
+    height: 44px;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+  }
+
+  #fullscreen-exit-button svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Filtres */
+  .pvtFilterBox {
+    border-radius: 4px !important;
+    padding: var(--spacing-md) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .pvtFilterBox h4 {
+    font-size: 13px !important;
+    margin-bottom: var(--spacing-sm) !important;
+  }
+
+  .pvtSearch {
+    font-size: 13px !important;
+    padding: 10px !important;
+  }
+}
+
+/* PETITS MOBILES - Écrans < 480px */
+@media (max-width: 479px) {
+  body {
+    padding: var(--spacing-sm);
+  }
+
+  #controls-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .control-group {
+    flex: 1 1 100%;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .control-group select {
+    width: 100%;
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+  }
+
+  .control-group label {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .control-group input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  /* Tableau très compact */
+  #table {
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+  }
+
+  table.pvtTable {
+    font-size: 11px !important;
+    border-radius: 4px !important;
+  }
+
+  table.pvtTable thead tr th,
+  table.pvtTable tbody tr th {
+    padding: 6px 8px !important;
+    font-size: 10px !important;
+  }
+
+  table.pvtTable tbody tr td {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+  }
+
+  .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+  }
+
+  table.pvtTable tr.subtotal-row td.subtotal-cell {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+  }
+
+  /* Boutons compacts mais touch-friendly */
+  button, .pvtFilterBox button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 40px;
+    border-radius: 4px !important;
+  }
+
+  #fullscreen-exit-button {
+    width: 40px;
+    height: 40px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  #fullscreen-exit-button svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Filtres compacts */
+  .pvtFilterBox {
+    border-radius: 4px !important;
+    padding: var(--spacing-md) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .pvtFilterBox h4 {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .pvtSearch {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  .pvtCheckContainer {
+    font-size: 11px !important;
+  }
+}
+
+/* --- STYLES POUR LES AGRÉGATIONS MULTIPLES --- */
+
+.multi-agg-controls {
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.multi-agg-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Marianne', sans-serif;
+}
+
+.multi-agg-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.agg-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background-color: var(--background-light);
+  font-family: 'Marianne', sans-serif;
+}
+
+.agg-checkbox-label:hover {
+  background-color: var(--table-hover);
+  border-color: var(--primary-color);
+}
+
+.agg-checkbox-label input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.agg-checkbox-label span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Styles pour les colonnes d'agrégation dans le tableau */
+table.pvtTable td {
+  border-left: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+table.pvtTable td[data-agg-type="sum"] {
+  border-left: 3px solid #10b981;
+  background-color: rgba(16, 185, 129, 0.03);
+}
+
+table.pvtTable td[data-agg-type="average"] {
+  border-left: 3px solid #3b82f6;
+  background-color: rgba(59, 130, 246, 0.03);
+}
+
+table.pvtTable td[data-agg-type="count"] {
+  border-left: 3px solid #f59e0b;
+  background-color: rgba(245, 158, 11, 0.03);
+}
+
+table.pvtTable td[data-agg-type="min"] {
+  border-left: 3px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.03);
+}
+
+table.pvtTable td[data-agg-type="max"] {
+  border-left: 3px solid #8b5cf6;
+  background-color: rgba(139, 92, 246, 0.03);
+}
+
+table.pvtTable td[data-agg-type="median"] {
+  border-left: 3px solid #06b6d4;
+  background-color: rgba(6, 182, 212, 0.03);
+}
+
+/* Responsive - agrégations multiples */
+@media (max-width: 768px) {
+  .multi-agg-checkboxes {
+    gap: 8px;
+  }
+
+  .agg-checkbox-label {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .multi-agg-checkboxes {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .agg-checkbox-label {
+    width: 100%;
+    justify-content: flex-start;
+  }
+    min-width: 50px;
+    font-weight: 600 !important;
+  }
+
+  table.pvtTable tbody tr td {
+    padding: 6px 8px !important;
+    font-size: 10px !important;
+    min-width: 50px;
+  }
+
+  table.pvtTable .pvtVal {
+    font-size: 11px !important;
+  }
+
+  .pvtTotal, .pvtTotalLabel, .pvtGrandTotal {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+  }
+
+  table.pvtTable tr.subtotal-row td.subtotal-cell {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+  }
+
+  /* Zones de drag-drop ultra-compactes */
+  .pvtAxisContainer, .pvtVals {
+    padding: 10px !important;
+    margin: 6px 0 !important;
+  }
+
+  .pvtAxisContainer li {
+    font-size: 11px !important;
+    padding: 3px 5px !important;
+    margin: 2px 2px !important;
+  }
+
+  .pvtAttr {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    min-height: 32px;
+  }
+
+  /* Boutons compacts mais touch-friendly */
+  button, .pvtFilterBox button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 40px;
+    border-radius: 6px !important;
+  }
+
+  #fullscreen-exit-button {
+    width: 40px;
+    height: 40px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  #fullscreen-exit-button svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Filtres compacts */
+  .pvtFilterBox {
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .pvtFilterBox h4 {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .pvtSearch {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  .pvtCheckContainer {
+    font-size: 11px !important;
+  }
+
+  /* Mode plein écran sur petits mobiles */
+  #fullscreen-table-container table.pvtTable {
+    font-size: 11px !important;
+  }
+}
+
+/* TRÈS PETITS ÉCRANS - Moins de 320px (rare mais possible) */
+@media (max-width: 319px) {
+  body {
+    padding: 4px;
+  }
+
+  #controls-container {
+    padding: 6px;
+    margin-bottom: 8px;
+  }
+
+  .control-group select {
+    font-size: 11px !important;
+    padding: 6px 4px !important;
+  }
+
+  table.pvtTable {
+    font-size: 10px !important;
+  }
+
+  table.pvtTable thead tr th,
+  table.pvtTable tbody tr th {
+    padding: 4px 6px !important;
+    font-size: 9px !important;
+    min-width: 40px;
+  }
+
+  table.pvtTable tbody tr td {
+    padding: 4px 6px !important;
+    font-size: 9px !important;
+    min-width: 40px;
+  }
+
+  button, .pvtFilterBox button {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    min-height: 36px;
+  }
+}
+
+/* OPTIMISATIONS LANDSCAPE MODE */
+@media (max-height: 500px) and (orientation: landscape) {
+  #controls-container {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+
+  #table {
+    padding: 10px;
+    margin-top: 0;
+  }
+
+  table.pvtTable {
+    margin-top: 10px !important;
+  }
+
+  table.pvtTable thead tr th,
+  table.pvtTable tbody tr th {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+
+  table.pvtTable tbody tr td {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
   }
 }

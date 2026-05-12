@@ -126,6 +126,40 @@ function setColumnSize(size) {
     changeColumnSize(size);
 }
 
+/**
+ * Sauvegarde la taille des colonnes dans localStorage
+ * @param {string|number} size - Taille à sauvegarder
+ */
+function saveColumnSizePreference(size) {
+    try {
+        localStorage.setItem('columnSizePreference', size.toString());
+    } catch (e) {
+        console.warn('Failed to save columnSize preference to localStorage:', e);
+    }
+}
+
+/**
+ * Restaure la taille des colonnes depuis localStorage
+ * @returns {string} Valeur sauvegardée ou '1.0' par défaut
+ */
+function loadColumnSizePreference() {
+    try {
+        const saved = localStorage.getItem('columnSizePreference');
+        return saved || '1.0';
+    } catch (e) {
+        console.warn('Failed to load columnSize preference from localStorage:', e);
+        return '1.0';
+    }
+}
+
+/**
+ * Initialise la taille des colonnes depuis la préférence sauvegardée
+ */
+function initializeColumnSizeFromPreference() {
+    const preferredSize = loadColumnSizePreference();
+    setColumnSize(preferredSize);
+}
+
 // Exports pour différents environnements
 if (typeof module !== 'undefined' && module.exports) {
     // Environment Node.js/CommonJS
@@ -133,7 +167,10 @@ if (typeof module !== 'undefined' && module.exports) {
         changeColumnSize,
         resetColumnSize,
         getCurrentColumnSize,
-        setColumnSize
+        setColumnSize,
+        saveColumnSizePreference,
+        loadColumnSizePreference,
+        initializeColumnSizeFromPreference
     };
 } else if (typeof window !== 'undefined') {
     // Environment Browser - Exposition globale
@@ -141,6 +178,9 @@ if (typeof module !== 'undefined' && module.exports) {
         changeColumnSize,
         resetColumnSize,
         getCurrentColumnSize,
-        setColumnSize
+        setColumnSize,
+        saveColumnSizePreference,
+        loadColumnSizePreference,
+        initializeColumnSizeFromPreference
     };
 }

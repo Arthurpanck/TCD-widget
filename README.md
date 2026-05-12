@@ -8,13 +8,16 @@ Cette version du widget est développée par [Arthur Panckoucke](https://github.
 
 ### ✅ Améliorations apportées au Pivot Table Original :
 
-- Traduction complète de l'interface en **français**
+- Traduction complète de l’interface en **français**
 - Mise en place de **deux modes de vue** :
   - Mode Création (édition du TCD)
   - Mode Plein écran (consultation lisible)
 - Amélioration de la lisibilité : **polices agrandies, meilleures couleurs**
 - Suppression des options inutiles pour se concentrer sur un usage **simple et efficace**
 - Libellés inspirés d’Excel : **Lignes, Colonnes, Valeur Σ**
+- **Sous-totaux** : Ajouter automatiquement des lignes de sous-totaux après chaque groupe
+- **Code couleur des variables** : Chaque variable reçoit une couleur unique pour meilleure lisibilité
+- **Ajustement de la taille des colonnes** : De normal à ultra-compact
 
 ### 🔧 Classis Informations
 This widget builds a [pivot table](https://pivottable.js.org/examples/) from the source data.
