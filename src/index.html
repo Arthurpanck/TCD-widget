@@ -28,46 +28,44 @@
   </head>
   <body>
 
-      <!-- Add a view selector with two mode : original pivot table and fullscreen -->
-      <!-- Add a view selector with ten mode to select column and font size        -->
+      <!-- Ultra-compact controls on single line -->
       <div id="controls-container" role="toolbar" aria-label="Options du tableau">
-          <div class="control-group">
-              <label for="view-mode-select">Vue :</label>
-              <select id="view-mode-select" aria-label="Sélectionner la vue du tableau">
-                  <option value="pivot">Vue Tableau Croisé Dynamique</option>
-                  <option value="fullscreen">Vue Tableau plein écran</option>
-              </select>
-          </div>
+          <select id="view-mode-select" aria-label="Sélectionner la vue du tableau" title="Vue">
+              <option value="pivot">Vue Tableau</option>
+              <option value="fullscreen">Plein écran</option>
+          </select>
 
-          <div class="control-group">
-              <label for="column-size-select">Taille colonnes :</label>
-              <select id="column-size-select" aria-label="Ajuster la taille des colonnes">
-                  <option value="1.0">1.0x - Normal</option>
-                  <option value="0.9">0.9x - Légèrement réduit</option>
-                  <option value="0.8">0.8x - Compact</option>
-                  <option value="0.7">0.7x - Très compact</option>
-                  <option value="0.6">0.6x - Ultra compact</option>
-                  <option value="0.5">0.5x - Minimal</option>
-                  <option value="0.4">0.4x - Micro</option>
-                  <option value="0.35">0.35x - Nano</option>
-                  <option value="0.3">0.3x - Pico</option>
-                  <option value="0.25">0.25x - Extrême</option>
-              </select>
-          </div>
+          <select id="column-size-select" aria-label="Ajuster la taille des colonnes" title="Taille colonnes">
+              <option value="1.0">1.0x</option>
+              <option value="0.9">0.9x</option>
+              <option value="0.8">0.8x</option>
+              <option value="0.7">0.7x</option>
+              <option value="0.6">0.6x</option>
+              <option value="0.5">0.5x</option>
+              <option value="0.4">0.4x</option>
+              <option value="0.35">0.35x</option>
+              <option value="0.3">0.3x</option>
+              <option value="0.25">0.25x</option>
+          </select>
 
-          <div class="control-group">
-              <label for="subtotals-checkbox">
-                  <input type="checkbox" id="subtotals-checkbox" aria-label="Afficher ou masquer les sous-totaux" />
-                  Afficher les sous-totaux
-              </label>
-          </div>
+          <label class="checkbox-label">
+              <input type="checkbox" id="subtotals-checkbox" aria-label="Afficher ou masquer les sous-totaux" />
+              <span>Subtotals</span>
+          </label>
 
-          <div class="control-group">
-              <label for="fixed-width-checkbox">
-                  <input type="checkbox" id="fixed-width-checkbox" aria-label="Activer le mode largeur fixe" />
-                  Mode fixe
-              </label>
-          </div>
+          <label class="checkbox-label">
+              <input type="checkbox" id="fixed-width-checkbox" aria-label="Activer le mode largeur fixe" />
+              <span>Mode fixe</span>
+          </label>
+
+          <select id="aggregations-select" aria-label="Sélectionner les agrégations" title="Agrégations" multiple>
+              <option value="sum" selected>Somme</option>
+              <option value="average">Moyenne</option>
+              <option value="count">Comptage</option>
+              <option value="min">Min</option>
+              <option value="max">Max</option>
+              <option value="median">Médiane</option>
+          </select>
       </div>
   
     <!-- exit full screen -->
