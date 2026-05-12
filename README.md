@@ -1,27 +1,61 @@
-# Widget Tableau Croisé Dynamique (TCD) pour Grist 🇫🇷
+# 🎯 TCD-Widget - Tableau Croisé Dynamique pour Grist
 
-Ce widget permet de créer un **tableau croisé dynamique** à partir des données sources de Grist, basé sur [pivottable.js](https://pivottable.js.org/examples/).
+Widget Grist customisé pour afficher des tableaux croisés dynamiques en français avec support avancé.
 
-Il s'agit d'une refonte du Widget intégré désormais à GristLabs dont l'auteur original est [jperon](https://github.com/jperon)
+## 📦 Structure du projet
 
-Cette version du widget est développée par [Arthur Panckoucke](https://github.com/Arthurpanck)
+```
+TCD-widget/
+├── src/                          # 📝 Code source
+│   ├── index.html               # Point d'entrée HTML
+│   ├── index.js                 # Logique principale
+│   ├── styles.css               # Styles (DSFR + Responsive)
+│   ├── package.json             # Dépendances
+│   ├── colorManager.js          # Gestion des couleurs
+│   ├── columnSizeManager.js     # Persistance taille colonnes
+│   ├── PivotLabels.js           # Étiquettes du pivot
+│   ├── excelExporter.js         # Export XLSX
+│   ├── subtotalsManager.js      # Sous-totaux
+│   └── multiAggregationManager.js # Agrégations multiples
+│
+├── docs/                         # 📚 Documentation
+│   ├── guides/                  # Guides d'utilisation
+│   ├── implementation/          # Détails techniques
+│   ├── dsfr/                    # Conformité gouvernementale
+│   └── *.md                     # Résumés et guides
+│
+├── tests/                        # 🧪 Tests et validation
+│   ├── QUICK_TEST_CHECKLIST.md
+│   ├── TESTING_CHECKLIST.md
+│   ├── CONSOLE_TEST_EXAMPLES.js
+│   └── VALIDATION_*.md
+│
+├── README.md                     # Ce fichier
+└── .gitignore
+```
 
-### ✅ Améliorations apportées au Pivot Table Original :
+## ✨ Features Implémentées
 
-- Traduction complète de l’interface en **français**
-- Mise en place de **deux modes de vue** :
-  - Mode Création (édition du TCD)
-  - Mode Plein écran (consultation lisible)
-- Amélioration de la lisibilité : **polices agrandies, meilleures couleurs**
-- Suppression des options inutiles pour se concentrer sur un usage **simple et efficace**
-- Libellés inspirés d’Excel : **Lignes, Colonnes, Valeur Σ**
-- **Sous-totaux** : Ajouter automatiquement des lignes de sous-totaux après chaque groupe
-- **Code couleur des variables** : Chaque variable reçoit une couleur unique pour meilleure lisibilité
-- **Ajustement de la taille des colonnes** : De normal à ultra-compact
+### 🔴 Corrections critiques
+- ✅ Persistance columnSize en plein écran
+- ✅ Export XLSX limité au pivot table
+- ✅ Sous-totaux automatiques
 
-### 🔧 Classis Informations
-This widget builds a [pivot table](https://pivottable.js.org/examples/) from the source data.
+### 🟠 Fonctionnalités
+- ✅ Mode fixe (non-expanding)
+- ✅ Agrégations multiples
+- ✅ Responsive design complet
 
-Just setting its url gives a pivot table without any row / column definition.
+### 🟢 Polish
+- ✅ Presets de compacité
+- ✅ Design DSFR (État Français)
+- ✅ Accessibilité WCAG AA
 
-The settings may be adjusted by passing url parameters, for example (with data similar to [this example](https://pivottable.js.org/examples/mps_agg.html)):
+## 📖 Documentation
+
+**Démarrage rapide**: `docs/guides/QUICK_START.md`  
+**Plan de test**: `tests/QUICK_TEST_CHECKLIST.md`  
+**Documentation complète**: `docs/IMPLEMENTATION_FINAL_SUMMARY.md`
+
+---
+**Status**: ✅ Production-ready | **Updated**: 12 mai 2026

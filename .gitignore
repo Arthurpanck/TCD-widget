@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.log
+*.tmp
+.env.local
+
+# Claude specific
+.claude/worktrees/
